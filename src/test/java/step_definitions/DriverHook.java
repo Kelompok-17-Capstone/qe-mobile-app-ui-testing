@@ -10,6 +10,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileReader;
 import java.net.MalformedURLException;
@@ -38,6 +40,18 @@ public class DriverHook {
     public void quitDriver(Scenario scenario) {
         setBrowserstackStatus(!scenario.isFailed());
         driver.quit();
+        System.out.println("""
+
+                ████████╗███████╗███████╗████████╗    ██████╗  ██████╗ ███╗   ██╗███████╗
+                ╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝    ██╔══██╗██╔═══██╗████╗  ██║██╔════╝
+                   ██║   █████╗  ███████╗   ██║       ██║  ██║██║   ██║██╔██╗ ██║█████╗ \s
+                   ██║   ██╔══╝  ╚════██║   ██║       ██║  ██║██║   ██║██║╚██╗██║██╔══╝ \s
+                   ██║   ███████╗███████║   ██║       ██████╔╝╚██████╔╝██║ ╚████║███████╗
+                   ╚═╝   ╚══════╝╚══════╝   ╚═╝       ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+                                                                                        \s
+                """);
+        Logger logger = LoggerFactory.getLogger(DriverHook.class);
+        logger.info("See reports: "+System.getProperty("user.dir")+"/reports/cucumber_reports/report.html");
     }
 
     void setBrowserstackStatus(boolean status) {

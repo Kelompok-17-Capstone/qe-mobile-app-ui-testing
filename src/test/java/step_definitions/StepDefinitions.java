@@ -40,10 +40,20 @@ public class StepDefinitions {
         firstResult.click();
     }
 
-    @Then("Artikel tentang Cucumber sudah muncul")
-    public void cucumberArticleShowedUp() {
+    @Then("Artikel tentang {string} sudah muncul")
+    public void cucumberArticleShowedUp(String keyword) {
         WebElement articleDescription = driver.findElement(AppiumBy.xpath("//*[@resource-id='pcs-edit-section-title-description']"));
         String judulArtikel = articleDescription.getText();
-        assertEquals("Ways of ensuring the quality of a service or product", judulArtikel);
+        switch (keyword.toUpperCase()) {
+            case "QUALITY ASSURANCE ENGINEER":
+                assertEquals("Ways of ensuring the quality of a service or product", judulArtikel);
+                break;
+            case "YOGYAKARTA":
+                assertEquals("Capital of the Special Region of Yogyakarta, Indonesia", judulArtikel);
+                break;
+            default:
+                break;
+        }
+
     }
 }

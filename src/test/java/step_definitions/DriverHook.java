@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverHook {
 
-    String runOn = "browserstack";
+    String runOn = "local";
 
     public static AndroidDriver driver;
 

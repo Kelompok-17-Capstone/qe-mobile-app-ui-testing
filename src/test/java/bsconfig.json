@@ -4,7 +4,7 @@
   "access_key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "project": "Capstone Kelompok 99",
+    "project": "Capstone Kelompok 17",
     "browserstack.debug": true,
     "app": "bs://c78d7c0fe7b970359e681f4b77c7746a715dedb0"
   },

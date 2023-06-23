@@ -38,7 +38,7 @@ public class DriverHook {
 
     @After
     public void quitDriver(Scenario scenario) {
-        setBrowserstackStatus(!scenario.isFailed());
+//        setBrowserstackStatus(!scenario.isFailed());
         driver.quit();
         System.out.println("""
 
@@ -54,21 +54,21 @@ public class DriverHook {
         logger.info("See reports: "+System.getProperty("user.dir")+"/reports/cucumber_reports/report.html");
     }
 
-    void setBrowserstackStatus(boolean status) {
-        JavascriptExecutor jse = driver;
-
-        if (!status) {
-            jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"failed\"}}");
-        } else {
-            jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\"}}");
-        }
-    }
+//    void setBrowserstackStatus(boolean status) {
+//        JavascriptExecutor jse = driver;
+//
+//        if (!status) {
+//            jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"failed\"}}");
+//        } else {
+//            jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\"}}");
+//        }
+//    }
 
     void useLocalDriver() throws MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setUdid("emulator-5554") // get from command "adb devices"
-                .setAppPackage("org.wikipedia") // change to package name of application to be tested
-                .setAppActivity("org.wikipedia.main.MainActivity"); // set to main activity of the application
+                .setAppPackage("com.example.alta_tech") // change to package name of application to be tested
+                .setAppActivity("com.example.mobile_flutter.MainActivity"); // set to main activity of the application
         driver = new AndroidDriver(new URL("http://localhost:4723"), options);
     }
 
